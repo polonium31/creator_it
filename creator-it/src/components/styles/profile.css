@@ -1,0 +1,33 @@
+#main:hover
+{
+    color: #8B6CE3;
+}
+label
+{
+    font-size: 28px;
+    padding: 2% 0% 1% 0%;
+    font-weight: 500; 
+}
+
+input
+{
+    font-weight: 400;
+    padding-bottom: 3%;
+    
+}
+
+.card
+{
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-top: 2%;
+}
+
+.save
+{
+    background-color: #8B6CE3;
+    color: #FFFFFF;
+    width: 20%;
+    font-weight: 800;
+    font-size: 2vw;
+}

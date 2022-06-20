@@ -1,0 +1,14 @@
+.card-body
+{
+    border-radius: 20px;
+}
+.maincard
+{
+    border: 4px solid rgb(150, 150, 150);
+    padding: 2% 2% 2% 2%;
+    border-radius: 20px;
+}
+h2
+{
+    font-weight: 600;
+}
