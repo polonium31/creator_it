@@ -2,16 +2,19 @@
 Creator It is a SEO optimisation and recommendation website for Youtubers, Instagram creators and other platforms creator.
 
 ## Logo
-![alt text](images/logo.png)
+<!-- ![alt text]( ) -->
+<p align="center">
+<img src="images/logo.png" width="500"/>
+</p>
 
-## Website Interface
-### Home Page
+# Website Interface
+### 1. Home Page
 ![alt text](images/1.png)
-### Services and Prediction by website
+### 2. Services and Prediction by website
 ![alt text](images/2.png)
-### Select Category Page
+### 3. Select Category Page
 ![alt text](images/3.png)
-### Profile
+### 4. Profile
 ![alt text](images/4.png)
 
 
