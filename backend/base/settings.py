@@ -97,17 +97,17 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "postgres",
-        "USER": "postgres",
-        "PASSWORD": "9978893246@Saurav",
+        'NAME': DB_USERNAME,
+        "USER": DB_USERNAME,
+        "PASSWORD": DB_PASSWORD,
         "HOST": "localhost",
         "PORT": "8888"
     }
 }
 
 '''
-EMail ID : team.creator.it@gmail.com
-Password : team.creator.itteam.creator.it
+EMail ID : .env/EMAIL_ID
+Password : .env/EMAIL_PASSWORD
 '''
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
