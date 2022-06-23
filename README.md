@@ -22,5 +22,5 @@ Creator It is a SEO optimisation and recommendation website for Youtubers, Insta
 [webpage link](https://github.com/polonium31/creator_it/tree/main/SDLC)
 
 ## Tech Stack
-1. Front-end: React(18.2.0), Bootstrap(5.1.3) 
-2. Back-end: Under Dev.
+1. Front-end: React v18, Bootstrap v5 
+2. Back-end: Django v4
