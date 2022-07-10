@@ -8,14 +8,20 @@ Creator It is a SEO optimisation and recommendation website for Youtubers, Insta
 </p>
 
 # Website Interface
-### 1. Home Page
-![alt text](images/1.png)
-### 2. Services and Prediction by website
-![alt text](images/2.png)
-### 3. Select Category Page
-![alt text](images/3.png)
-### 4. Profile
-![alt text](images/4.png)
+### 1. Login Page
+![alt text](images/1.jpg)
+### 2. SignUp Page
+![alt text](images/2.jpg)
+### 3. Services and Prediction by website
+![alt text](images/3.jpg)
+### 4. Select Category Page
+![alt text](images/4.jpg)
+### 5. Select Prediction Page
+![alt text](images/5.jpg)
+
+![alt text](images/6.jpg)
+### 6. Profile Page
+![alt text](images/7.jpg)
 
 
 ## Software Development Life Cycle
