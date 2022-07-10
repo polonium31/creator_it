@@ -6,7 +6,7 @@ import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import "./styles/login.css"
 import AuthContext from "../context/AuthContext";
 import Google from "../images/Google.png"
-const Login = () => {
+export const Login = () => {
   const { loginUser } = useContext(AuthContext);
   const handleSubmit = e => {
     e.preventDefault();
@@ -67,6 +67,3 @@ const Login = () => {
     </>
   );
 };
-
-
-export default Login;

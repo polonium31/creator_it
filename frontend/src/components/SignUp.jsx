@@ -23,11 +23,7 @@ export const SignUp = () => {
 
 			<div className="container main ">
 				<div className="row d-flex justify-content-start align-items-center">
-
 					<div className="col-lg-8 offset-lg-2 col-md-8 offset-md-3 mainsignUpbox">
-
-
-
 						<div className="loginbox" >
 							<div className="text-center">
 								<img className="img-fluid" src={Image} alt="Creator It" id="image" style={{ width: "35%", marginTop: "3%" }} />

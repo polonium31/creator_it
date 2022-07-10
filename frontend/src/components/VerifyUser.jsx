@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import AuthContext from "../context/AuthContext";
 import { useParams } from 'react-router-dom';
-const VerifyUser = () => {
+export const VerifyUser = () => {
   useEffect(()=>console.log("verifyUser"),[])
   const { verifyUserEmail } = useContext(AuthContext);
 
@@ -14,5 +14,3 @@ const VerifyUser = () => {
       </>
   )
 }
-
-export default VerifyUser;
