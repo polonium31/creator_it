@@ -12,7 +12,7 @@ const SubItemData = [[
         putimg:false,
     },
     {
-        title: "Tumbnail Prediction",
+        title: "Thumbnail Prediction",
         input: false,
         imgsrc: Youtube,
         putimg:true,
