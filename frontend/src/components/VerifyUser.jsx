@@ -6,7 +6,7 @@ export const VerifyUser = () => {
   const { verifyUserEmail } = useContext(AuthContext);
 
   const { Uid, Token} = useParams();
-  verifyUserEmail({Uid}, {Token});
+  verifyUserEmail(Uid, Token);
   return (
      <>
       <p>{Uid}</p>

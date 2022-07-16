@@ -6,14 +6,18 @@ import {NavLink} from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 export const Profile = () => {
   const { fetchData } = useContext(AuthContext);
+  const [loader,setLoader] = useState(false);
   const [data,setData] = useState({});
-  const call = async () =>
-  {
-    setData(await fetchData()) 
+  const call = async () => {
+    const x = await fetchData()
+    setData(x);
   }
   useEffect(
-  () => call(),[])
-    
+    () => {
+        setLoader(true);
+        call();
+        setLoader(false);
+    },[])
   return (
     <>
       <div className='container-fluid'>
@@ -23,8 +27,8 @@ export const Profile = () => {
             <div className="p-3 mb-4 card" >
               <div className="container-fluid align-items-center justify-content-center" >
                 <div style={{marginBottom:"-1.5%"}}>
-                <NavLink to="/edit-profile" className="btn btn-lg " id="main" style={{fontSize:"3.5vh"}}><FontAwesomeIcon icon={faPenToSquare} style={{ paddingRight: "8px" }} />Edit Profile</NavLink>
-                <NavLink to="/reset-password" className="btn btn-lg " id="main" style={{fontSize:"3.5vh"}}><FontAwesomeIcon icon={faArrowsRotate} style={{ paddingRight: "8px" }} />Reset Password</NavLink>
+                <NavLink to="/edit-profile" className="btn btn-lg col-lg-4 col-md-4 col-sm-6" id="main"><FontAwesomeIcon icon={faPenToSquare} style={{ paddingRight: "8px" }} />Edit Profile</NavLink>
+                <NavLink to="/reset-password" className="btn btn-lg  col-lg-4 col-md-4 col-sm-6" id="main"><FontAwesomeIcon icon={faArrowsRotate} style={{ paddingRight: "8px" }} />Reset Password</NavLink>
                 </div>
                 <hr/>
                 <form>

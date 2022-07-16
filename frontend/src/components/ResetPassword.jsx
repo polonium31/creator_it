@@ -14,8 +14,8 @@ export const ResetPassword = () => {
             <div className="p-3 mb-4 card" >
               <div className="container-fluid align-items-center justify-content-center" >
                 <div style={{marginBottom:"-1.5%"}}>
-                <NavLink to="/edit-profile" className="btn btn-lg " id="main" style={{fontSize:"2vw"}}><FontAwesomeIcon icon={faPenToSquare} style={{ paddingRight: "8px" }} />Edit Profile</NavLink>
-                <NavLink to="/reset-password" className="btn btn-lg " id="main" style={{fontSize:"2vw", color:"red"}}><FontAwesomeIcon icon={faArrowsRotate} style={{ paddingRight: "8px" }} />Reset Password</NavLink>
+                <NavLink to="/edit-profile" className="btn btn-lg col-lg-4 col-md-4 col-sm-6" id="main" ><FontAwesomeIcon icon={faPenToSquare} style={{ paddingRight: "8px" }} />Edit Profile</NavLink>
+                <NavLink to="/reset-password" className="btn btn-lg col-lg-4 col-md-4 col-sm-6" id="main" style={{color:"red"}}><FontAwesomeIcon icon={faArrowsRotate} style={{ paddingRight: "8px" }} />Reset Password</NavLink>
                 </div>
                 <hr/>
                <div className="col-md-6 offset-md-3 text-center">
@@ -37,7 +37,7 @@ export const ResetPassword = () => {
                 </form>
                </div>
                <div className="d-flex align-items-center justify-content-center ">
-                  <button type="submit" className="btn-dark btn-lg" style={{paddingLeft:"5%", paddingRight:"5%"}}>Reset</button>
+                  <button type="submit" className="btn-dark btn-lg" style={{paddingLeft:"5%", paddingRight:"5%",fontSize:"x-large"}}>Reset</button>
                 </div>
               </div>
 

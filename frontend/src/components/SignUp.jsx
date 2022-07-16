@@ -26,7 +26,7 @@ export const SignUp = () => {
 					<div className="col-lg-8 offset-lg-2 col-md-8 offset-md-3 mainsignUpbox">
 						<div className="loginbox" >
 							<div className="text-center">
-								<img className="img-fluid" src={Image} alt="Creator It" id="image" style={{ width: "35%", marginTop: "3%" }} />
+								<img className="img-fluid" src={Image} alt="Creator It" id="image" style={{ width: "40%", marginTop: "3%" }} />
 							</div>
 							<h1 className="text-center" style={{ color: "#000000" }}>Sign Up</h1>
 							<form className="pt-2 col-md-7 mx-auto" onSubmit={handleSubmit} >
@@ -45,8 +45,8 @@ export const SignUp = () => {
 								</div>
 								<div className="inputContainer">
 									<FontAwesomeIcon icon={faCameraRetro} id="icon" size="xl" />
-									<select required className="Field" id="content_category" onChange={e => setCategory(e.target.value)}>
-										<option hidden selected>Select Category</option>
+									<select required className="Field" id="content_category" onChange={e => setCategory(e.target.value)} style={{marginTop:"1%"}}>
+										<option selected>Select Category</option>
 										<option>Vlogs and Blogs</option>
 										<option >Video Game and Esports</option>
 										<option >Film and Animation</option>

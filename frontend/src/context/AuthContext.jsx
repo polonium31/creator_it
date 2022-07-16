@@ -93,8 +93,8 @@ export const AuthProvider = ({ children }) => {
       },
     });
     const data = await response.json()
- 
-    return data
+    localStorage.setItem("data",data);
+    return data;
   };
   const editUser = async (firstname, lastname, content_category) => {
     const response = await fetch("http://127.0.0.1:8000/auth/users/me/", {
@@ -108,6 +108,7 @@ export const AuthProvider = ({ children }) => {
         lastname, 
         content_category
       })
+      
     });
     const data = await response.json();
     let x;
@@ -118,7 +119,7 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
-      history.push("/profile");
+      history.push("/");
     } 
     else if (response.status === 401) {
       alert(x);
@@ -131,15 +132,17 @@ export const AuthProvider = ({ children }) => {
     const response = await fetch("http://127.0.0.1:8000/auth/users/activation/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-type": "application/json; charset=UTF-8"
       },
       body: JSON.stringify({
         uid,
         token
       })
     });
-    const data = await response.json();
-    console.log(data);
+    if (response.status === 204)
+    {
+      history.push("/verification-compelete");
+    } 
 
   };
   const logoutUser = () => {

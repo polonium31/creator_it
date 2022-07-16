@@ -10,7 +10,7 @@ var c = `${props.title}`==="Comming Soon"?s=`/${props.maintitle}`:s;
             <div className='col-md-6 col-10 mx-auto'>
                 <br></br>
                 <NavLink to={c} style={{ textDecoration: "none", color: "Black" }}>
-                    <div className="card" style={{ width: "18rem", height: "16rem" }}>
+                    <div className="card  justify-content-start align-items-center mx-auto" style={{ width: "18rem", height: "16rem" }}>
                         <div className="card-body ">
                             <div class="container d-flex h-100 maincard">
                                 <div class="row justify-content-center align-self-center">

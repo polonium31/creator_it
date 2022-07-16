@@ -19,17 +19,15 @@ export const Login = () => {
     <>
       <div className="container main">
         <div className="row d-flex justify-content-start align-items-center">
-
-
           <div className="col-lg-8 offset-lg-2 col-md-8 offset-md-3 mainsignUpbox">
-
-            <div className="loginbox" >
+ 
+            <div className="loginbox " >
               <div className="text-center">
                 <img className="img-fluid" src={Image} alt="Creator It" id="image" style={{ width: "50%", marginTop: "3%" }} />
               </div>
               <br />
               <h1 className="text-center" style={{ color: "#000000" }}>LogIn</h1>
-              <form className="pt-4 col-md-7 mx-auto" onSubmit={handleSubmit} >
+              <form className="pt-4 col-md-7 col-sm-10 mx-auto" onSubmit={handleSubmit} >
 
                 <div className="inputContainer">
                 <FontAwesomeIcon icon={faUser} id="icon" size="xl" />

@@ -4,7 +4,7 @@ import AuthContext from "../context/AuthContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from "react-router-dom";
 import "./styles/header.css"
-import { faUserGear, faMoon, faUser, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faUserGear, faMoon, faUser, faArrowRightFromBracket,faAddressCard } from "@fortawesome/free-solid-svg-icons";
 export const Header = () => {
     const mystyle =
     {
@@ -16,13 +16,20 @@ export const Header = () => {
         color: "black",
     }
     const { fetchData } = useContext(AuthContext);
+    const [loader,setLoader] = useState(false);
     const [data,setData] = useState({});
     const call = async () =>
     {
-      setData(await fetchData()) 
+        const x = await fetchData()
+        setData(x);
+        // console.log(x);
     }
     useEffect(
-    () => call(),[])
+    () => {
+        setLoader(true);
+        call();
+        setLoader(false);
+    },[])
   
       
     const { logoutUser } = useContext(AuthContext);
@@ -42,11 +49,11 @@ export const Header = () => {
 
                                                 <h3 className=" dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <FontAwesomeIcon icon={faUserGear} style={{ paddingRight: "1vh" }} />
-                                                    {data.firstname} 
+                                                    {data.firstname}
                                                 </h3>
                                                 <ul className="dropdown-menu dropmenu" ariaLabelledby="navbarDropdown" style={{ fontSize: "2.5vh" }}>
                                                     <li className='option' style={{ borderBottom: "1px solid black"}}><NavLink className="dropdown-item " to="/profile" style={mylink}><FontAwesomeIcon icon={faUser} style={mystyle} />Profile Settings</NavLink></li>
-                                                    <li className='option' style={{ borderBottom: "1px solid black"}}><NavLink className="dropdown-item " to="/" style={mylink}><FontAwesomeIcon icon={faMoon} style={mystyle} />Dark Mode</NavLink></li>
+                                                    <li className='option' style={{ borderBottom: "1px solid black"}}><NavLink className="dropdown-item " to="/contact-form" style={mylink}><FontAwesomeIcon icon={faAddressCard} style={mystyle} />Contact Form</NavLink></li>
                                                     <li className='option'><button className="dropdown-item " onClick={logoutUser} style={mylink}><FontAwesomeIcon icon={faArrowRightFromBracket} style={mystyle} />Log Out</button></li>
                                                 </ul>
                                             </li>

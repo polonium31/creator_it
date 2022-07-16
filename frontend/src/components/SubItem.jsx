@@ -44,10 +44,10 @@ export const SubItem = () => {
       }
       const newStr =alphaOnly(myJSON);
       var x = handleClick(newStr);
-      console.log(newStr);
+    //   console.log(newStr);
     return (
         <>
-            <div className='container-fluid mb-5' style={{ marginLeft: "10%",marginTop:"-3%" }}>
+            <div className='container-fluid mb-5'>
                 <div className='row'>
                     <div className='col-10 mx-auto'>
                         <div className='row gy-4'>

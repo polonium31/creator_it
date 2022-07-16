@@ -8,6 +8,7 @@ import { Login } from "./components/Login";
 import { SignUp } from "./components/SignUp";
 
 import { Header } from './components/Header';
+import { ContactForm } from './components/ContactForm';
 import { Home } from "./components/Home";
 import { Profile } from "./components/Profile";
 import { SubItem } from "./components/SubItem";
@@ -60,6 +61,14 @@ const App = (props) => {
               <>
                 <Header />
                 <EditProfile />
+              </>
+            )
+          }} />
+          <Route exact path="/contact-form" render={() => {
+            return (
+              <>
+                <Header />
+                <ContactForm />
               </>
             )
           }} />
