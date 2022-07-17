@@ -1,7 +1,7 @@
 import Youtube from "../images/Youtube.png";
 import Instagram from "../images/Instagram.png";
 import Twitter from "../images/Twitter.png";
-// import AllInOne from "../images/AllInOne.png";
+import AllInOne from "../images/AllInOne.png";
 // import LinkedIn from "../images/LinkedIn.png";
 // import OtherPlatform from "../images/OtherPlatform.png";
 const SubItemData = [[
@@ -18,7 +18,7 @@ const SubItemData = [[
         putimg:true,
     },
     {
-        title: "Trending Hashtags Prediction",
+        title: "Creator Statics on Youtube",
         input: true,
         imgsrc: Youtube,
         putimg:false,
@@ -43,7 +43,7 @@ const SubItemData = [[
         putimg:true,
     },
     {
-        title: "Trending Hashtags Prediction",
+        title: "Creator Statics on Instagram",
         input: true,
         imgsrc: Instagram,
         putimg:false,
@@ -53,12 +53,6 @@ const SubItemData = [[
     },
 ],
 [
-    {
-        title: "Trending Topic Hashtags Prediction",
-        input: true,
-        imgsrc: Twitter,
-        putimg:false,
-    },
     {
         title: "Sentiment Prediction",
         input: true,
@@ -73,36 +67,27 @@ const SubItemData = [[
     },
     
     {
+        title: "User Statics on Twitter",  
+        input: true,
+        imgsrc: Instagram,
+        putimg:false,
+    },
+    {
         title: "Comming Soon",
     },
-
 
 ],
 [
     {
-        title: "Creator Engagement on Youtube",
+        title: "Trending Hashtags Prediction",
         input: true,
-        imgsrc: Youtube,
+        imgsrc: AllInOne,
         putimg:true,
     },
     {
-        title: "Most Growing Channels of Youtube",
-        input: true,
-        imgsrc: Youtube,
-        putimg:false,
+        title: "Comming Soon",
     },
-    {
-        title: "Most Growing Insta Influencer",
-        input: true,
-        imgsrc: Instagram,
-        putimg:false,
-    },
-    {
-        title: "Creator Engagement on Instagram",
-        input: true,
-        imgsrc: Instagram,
-        putimg:false,
-    },
+
 ],
 [
 

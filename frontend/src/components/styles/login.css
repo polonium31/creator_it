@@ -1,5 +1,6 @@
 .main{
     padding: 2% 2% 2% 2%;
+    margin: 2% 2% 2% 2%;
     overflow-y: hidden;
 overflow-x: hidden; 
 }
@@ -15,6 +16,7 @@ overflow-x: hidden;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    padding: 2% 2% 2% 2%;
 }
 .googlebtn
 {
