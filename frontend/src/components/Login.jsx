@@ -17,7 +17,7 @@ export const Login = () => {
 
   return (
     <>
-      <div className="container main">
+      <div className="container main" style={{margin:"5% 5% 5% 5%"}}>
         <div className="row d-flex justify-content-start align-items-center">
           <div className="col-lg-8 offset-lg-2 col-md-8 offset-md-3 align-items-center">
  
