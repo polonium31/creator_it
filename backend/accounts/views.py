@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 import requests
 from accounts.misc.hashtags import get_hashtags
+from accounts.misc.titles import get_titles
 
 def get_results(request, Item, Id, SubItem, SubId):
     token = request.META.get("HTTP_TOKEN", "")
@@ -13,12 +14,17 @@ def get_results(request, Item, Id, SubItem, SubId):
     if authenticated == 200:
         if Item == "YouTube":
             if keyword:
+                # print(keyword)
                 result = youtube(Id, SubItem, SubId, keyword)
             else:
                 result = youtube(Id, SubItem, SubId)
             return JsonResponse({"youtube_result": result})
         elif Item == "Instagram":
-            result = instagram(Id, SubItem, SubId, keyword)
+            if Item == "Instagram":
+                if keyword:
+                    result = instagram(Id, SubItem, SubId, keyword)
+                else:
+                    result = instagram(Id, SubItem, SubId)
             return JsonResponse({"instagram_result": result})
         elif Item == "Twitter":
             result = twitter(Id, SubItem, SubId, keyword)
@@ -37,25 +43,33 @@ def get_results(request, Item, Id, SubItem, SubId):
         return JsonResponse(status = 404,data = {"Invalid credentials !": "Token not provided or Invalid"})
 
 def youtube(Id, SubItem, SubId, keyword="Hello"):
-    
-    final_dict = get_hashtags(keyword)
-
+    # print(SubItem)
+    if SubItem == "Trending Hashtags Prediction":
+        final_dict = get_hashtags(keyword)
+    elif  SubItem == "Trending Title Prediction":
+        final_dict = get_titles(keyword)
+    # print(final_dict)
     context = {
         "YouTube_Id": Id,
         "YouTube_SubItem": SubItem,
         "YouTube_SubId": SubId,
-        "HashTags": final_dict,
+        "Result": final_dict,
     }
     return ({"context": context})
 
 def instagram(Id, SubItem, SubId, keyword):
-    final_dict = get_hashtags(keyword)
+    if SubItem == "Trending Hashtags Prediction":
+        final_dict = get_hashtags(keyword)
+    elif  SubItem == "Trending Title Prediction":
+        final_dict = get_titles(keyword)
+    # print(final_dict)
+    # final_dict = get_hashtags(keyword)
 
     context = {
         "Instagram_Id": Id,
         "Instagram_SubItem": SubItem,
         "Instagram_SubId": SubId,
-        "HashTags": final_dict,
+        "Result": final_dict,
     }
     return ({"context": context})
 
