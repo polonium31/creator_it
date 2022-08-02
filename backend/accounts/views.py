@@ -1,7 +1,12 @@
+import imp
 from django.http import JsonResponse
 import requests
 from accounts.misc.hashtags import get_hashtags
 from accounts.misc.titles import get_titles
+
+from accounts.misc.YouTube.stats import get_youtube_stats
+
+from accounts.misc.Twitter.stats import get_twitter_stats
 
 def get_results(request, Item, Id, SubItem, SubId):
     token = request.META.get("HTTP_TOKEN", "")
@@ -11,23 +16,32 @@ def get_results(request, Item, Id, SubItem, SubId):
         token = ""
     authenticated = requests.post("http://127.0.0.1:8000/auth/jwt/verify", json={"token": str(token)}).status_code
     keyword = request.GET.get("keyword")
+    url = request.GET.get("url")
+    username = request.GET.get("username")
+    # print(username)
     if authenticated == 200:
         if Item == "YouTube":
-            if keyword:
+            if url or keyword:
                 # print(keyword)
-                result = youtube(Id, SubItem, SubId, keyword)
+                result = youtube(Id, SubItem, SubId, url, keyword)
             else:
-                result = youtube(Id, SubItem, SubId)
+                return JsonResponse(status = 400,data = {"Bad Request": "Check request parameters ..."})
+            # elif keyword:
+            #     result = youtube(Id, SubItem, SubId, keyword)
             return JsonResponse({"youtube_result": result})
         elif Item == "Instagram":
-            if Item == "Instagram":
-                if keyword:
-                    result = instagram(Id, SubItem, SubId, keyword)
-                else:
-                    result = instagram(Id, SubItem, SubId)
+            if keyword:
+                result = instagram(Id, SubItem, SubId, keyword)
+            else:
+                result = instagram(Id, SubItem, SubId)
             return JsonResponse({"instagram_result": result})
         elif Item == "Twitter":
-            result = twitter(Id, SubItem, SubId, keyword)
+            if username or keyword:
+                result = twitter(Id, SubItem, SubId, username, keyword)
+            else:
+                return JsonResponse(status = 400,data = {"Bad Request": "Check request parameters ..."})
+            # elif keyword:
+            #     result = twitter(Id, SubItem, SubId, keyword)
             return JsonResponse({"twitter_result": result})
         elif Item == "ALLInOne":
             result = allinone(Id, SubItem, SubId, keyword)
@@ -42,12 +56,14 @@ def get_results(request, Item, Id, SubItem, SubId):
     else:
         return JsonResponse(status = 404,data = {"Invalid credentials !": "Token not provided or Invalid"})
 
-def youtube(Id, SubItem, SubId, keyword="Hello"):
+def youtube(Id, SubItem, SubId, url, keyword):
     # print(SubItem)
     if SubItem == "Trending Hashtags Prediction":
         final_dict = get_hashtags(keyword)
     elif  SubItem == "Trending Title Prediction":
         final_dict = get_titles(keyword)
+    elif SubItem == "YouTube Stats":
+        final_dict = get_youtube_stats(url)
     # print(final_dict)
     context = {
         "YouTube_Id": Id,
@@ -73,8 +89,11 @@ def instagram(Id, SubItem, SubId, keyword):
     }
     return ({"context": context})
 
-def twitter(Id, SubItem, SubId, keyword):
-    final_dict = get_hashtags(keyword)
+def twitter(Id, SubItem, SubId, username, keyword):
+    if SubItem == "Trending Hashtags Prediction":
+        final_dict = get_hashtags(keyword)
+    elif SubItem == "Twitter Stats":
+        final_dict = get_twitter_stats(username)
 
     context = {
         "Twitter_Id": Id,
