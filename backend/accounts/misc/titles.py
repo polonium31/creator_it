@@ -21,4 +21,16 @@ def get_titles(keyword = "Hello"):
     json = dict()
     for i in range(0, len(elements)-1, 2):
         json[elements[i]] = elements[i+1].strip()
-    return json
+
+    titles_1 = list()
+    for key, val in json.items():
+        try:
+            if int(key):
+                titles_1.append(val)
+        except:
+            titles_1.append(key)
+
+    final_json = dict()
+    for key, value in zip(range(len(titles_1)), titles_1):
+        final_json[key] = value.strip()
+    return final_json
