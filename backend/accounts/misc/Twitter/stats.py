@@ -18,7 +18,6 @@ access_token = os.getenv("access_token")
 access_token_secret = os.getenv("access_token_secret")
 
 def get_twitter_stats(username):
-    print(username)
     os.environ['TOKEN'] = bearer
     def auth():
         return os.getenv('TOKEN')
