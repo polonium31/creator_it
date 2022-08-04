@@ -22,13 +22,13 @@ Creator It is a SEO optimisation and recommendation website for Youtubers, Insta
 ### 6. Profile Page
 ![alt text](images/7.png)
 ### 7. Edit Profile Page
-![alt text](images/8.png)
+![alt text](images/8.PNG)
 ### 8. Reset password Page
-![alt text](images/9.png)
+![alt text](images/9.PNG)
 ### 9. Email verification Page
-![alt text](images/10.png)
+![alt text](images/10.PNG)
 ### 10. Verification complete Page
-![alt text](images/11.png)
+![alt text](images/11.PNG)
 
 
 

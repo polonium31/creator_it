@@ -100,7 +100,7 @@ const App = (props) => {
 
           <Redirect to="/" />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </AuthProvider>
     </>
   )
