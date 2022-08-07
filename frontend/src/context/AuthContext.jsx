@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 
 const AuthContext = createContext();
-
+const baseURL = "http://127.0.0.1:8000/";
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   const history = useHistory();
 
   const loginUser = async (email, password) => {
-    const response = await fetch("http://127.0.0.1:8000/auth/jwt/create/", {
+    const response = await fetch(`${baseURL}auth/jwt/create/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
   const registerUser = async (email, firstname, lastname, content_category, password, re_password) => {
-    const response = await fetch("http://127.0.0.1:8000/auth/users/", {
+    const response = await fetch(`${baseURL}auth/users/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }) => {
 
   };
   const fetchData = async () => {
-    const response = await fetch("http://127.0.0.1:8000/auth/users/me/",{
+    const response = await fetch(`${baseURL}auth/users/me/`,{
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ export const AuthProvider = ({ children }) => {
     return data;
   };
   const editUser = async (firstname, lastname, content_category) => {
-    const response = await fetch("http://127.0.0.1:8000/auth/users/me/", {
+    const response = await fetch(`${baseURL}auth/users/me/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -128,8 +128,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const verifyUserEmail = async (uid, token) => {
-    console.log(uid, token);
-    const response = await fetch("http://127.0.0.1:8000/auth/users/activation/", {
+    
+    const response = await fetch(`${baseURL}auth/users/activation/`, {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8"
@@ -143,6 +143,31 @@ export const AuthProvider = ({ children }) => {
     {
       history.push("/verification-compelete");
     } 
+
+  };
+  const ForgotUserPassword = async (email) => {
+  
+    const response = await fetch(`${baseURL}auth/users/reset_password/`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify({
+        email
+      })
+    });
+    const data = await response.json();
+    let x;
+    for (const key in data) {
+        x = data[key];
+    }
+    if (response.status === 204)
+    {
+      history.push("/email-verification");
+    } 
+    else if (response.status === 400) {
+      alert(x);
+    }
 
   };
   const logoutUser = () => {
@@ -162,7 +187,8 @@ export const AuthProvider = ({ children }) => {
     logoutUser,
     verifyUserEmail,
     fetchData,
-    editUser
+    editUser,
+    ForgotUserPassword
   };
 
   useEffect(() => {

@@ -39,7 +39,7 @@ export const Login = () => {
                 </div>
                 <div className="d-flex jusity-content-end pb-4">
                   <div className="ms-auto">
-                    <NavLink to="#" className="text-danger text-decoration-none">
+                    <NavLink to="/forgot-password" className="text-danger text-decoration-none">
                       Forgot Password ?</NavLink>
                   </div>
                 </div>

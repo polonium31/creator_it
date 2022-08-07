@@ -13,9 +13,12 @@ import { Home } from "./components/Home";
 import { Profile } from "./components/Profile";
 import { SubItem } from "./components/SubItem";
 import { Result } from "./components/Result";
+import { FinalOutputOne } from "./components/FinalOutputOne";
+import { FinalOutputTwo } from "./components/FinalOutputTwo";
 import { VerifyUser } from "./components/VerifyUser";
 import { EmailVerify } from "./components/EmailVerify";
 import { VerifiedEmail }  from "./components/VerifiedEmail";
+import { ForgotPassword }  from "./components/ForgotPassword";
 import { ResetPassword } from "./components/ResetPassword";
 import { EditProfile } from "./components/EditProfile";
 import { Footer } from "./components/Footer";
@@ -31,6 +34,7 @@ const App = (props) => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/email-verification" component={EmailVerify}/>
           <Route exact path="/verification-compelete" component={VerifiedEmail}/>
+          <Route exact path="/forgot-password" component={ForgotPassword}/>
          
           <PrivateRoute exact path="/" render={() => {
             return (
@@ -85,6 +89,14 @@ const App = (props) => {
               <>
                 <Header />
                 <Result />
+              </>
+            )
+          }} />
+          <Route exact path="/:Item/:Id/:SubItem/:SubId/:Input" render={() => {
+            return (
+              <>
+                <Header />
+                <FinalOutputTwo/>
               </>
             )
           }} />

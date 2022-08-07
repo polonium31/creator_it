@@ -3,17 +3,26 @@ import resultimg from "../images/ContentCreator.png"
 import { useParams } from 'react-router-dom';
 import SubItemData from "./SubItemData"
 import './styles/result.css'
+import { useHistory } from "react-router-dom";
 export const Result = (props) => {
+    // const keyword = keyword.value;
     const { Item, Id, SubItem, SubId } = useParams();
+     const history = useHistory();
+    const handleSubmit = e => {
+        e.preventDefault();
+        const keyword = e.target.keyword.value;
+        var s =  `/${Item}/${Id}/${SubItem}/${SubId}/${keyword}`;
+        history.push(s);
+      };
     return (
         <>
             <div className='container-fluid' style={{ marginbottom: "-5%" }}>
                 <div className='row'>
                     <div className='col-8 mx-auto'><br />
                         <h1 > <img src={SubItemData[Id][SubId].imgsrc} alt={Item} style={{ width: "10%", height: "10%" }} /> {Item} {SubItemData[Id][SubId].title}</h1>
-                        <form>
+                        <form onSubmit={handleSubmit}>
 
-                            <div className="from-group">
+                            {/* <div className="from-group">
                                 <label>Enter the Category you want to search for :</label>
                                 <select className="form-select" id="content_category" style={{ fontSize: "24px", border: "3px solid black" }}>
                                     <option selected>Select Category</option>
@@ -30,21 +39,21 @@ export const Result = (props) => {
                                     <option >Celebrity Gossip Videos</option>
 
                                 </select>
-                            </div>
+                            </div> */}
                             <br /> <br /> 
-                            {SubItemData[Id][SubId].input===true?<div className="form-group" >
+                            <div className="form-group" >
                                 <label>Enter any Keyword of your choice :</label>
-                                <input type="text" className="form-control" style={{ fontSize: "24px", border: "3px solid black" }} id="lastName" />
-                            </div>:null}
+                                <input type="text" required className="form-control" style={{ fontSize: "24px", border: "3px solid black" }} name="keyword" />
+                            </div>
                             <br />
                             <div className="d-flex align-items-center justify-content-center">
 
-                                <button type="submit" className="btn btn-lg" style={{ backgroundColor: "#000", color: "#FFFFFF" }}>Get Prediction</button>
+                                <button type='submit' className="btn btn-lg" style={{ backgroundColor: "#000", color: "#FFFFFF" }}>Get Prediction</button>
 
                             </div>
 
                         </form>
-                        {SubItemData[Id][SubId].putimg===true?<img src={resultimg} className="rounded mx-auto d-block img-fluid mainimg" alt="Image" style={{ marginTop: "0%", marginBottom: "-5%", width:"30%" }} /> :null}
+                        <img src={resultimg} className="rounded mx-auto d-block img-fluid mainimg" alt="Image" style={{ marginTop: "0%", marginBottom: "-5%", width:"30%" }} />
                         
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import "./styles/scard.css"
 export const SubCard = (props) => {
    var s =  `/${props.maintitle}/${props.mainindex}/${props.title}/${props.idx}`;
 var c = `${props.title}`==="Comming Soon"?s=`/${props.maintitle}`:s;
+
     return (
         <>
 

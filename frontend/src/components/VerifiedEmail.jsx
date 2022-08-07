@@ -6,7 +6,7 @@ import "./styles/emailverify.css"
 export const VerifiedEmail = () => {
   return (
     <>
-<div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center">
         <div className="col-lg-8 offset-lg-0 col-md-8 offset-md-2">
           <br />
           <div className="text-center">
@@ -21,8 +21,8 @@ export const VerifiedEmail = () => {
               <img className="img-fluid" src={EmailIMG} alt="Creator It" id="image" style={{ width: "40%" }} />
             </div>
             <div className="register mt-2 text-center">
-                  <NavLink to="/login"  className="btn btn-dark btn-lg" style={{paddingLeft:"5%",paddingRight:"5%",fontSize:"24px"}}>Login</NavLink>
-                </div>
+              <NavLink to="/login" className="btn btn-dark btn-lg" style={{ paddingLeft: "5%", paddingRight: "5%", fontSize: "24px" }}>Login</NavLink>
+            </div>
             <br />
           </div>
         </div>
