@@ -1,19 +1,39 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from 'react';
 import resultimg from "../images/ContentCreator.png"
-import { useParams } from 'react-router-dom';
 import SubItemData from "./SubItemData"
 import './styles/result.css'
-import { useHistory } from "react-router-dom";
+import { useHistory,useParams } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 export const Result = (props) => {
-    // const keyword = keyword.value;
     const { Item, Id, SubItem, SubId } = useParams();
-     const history = useHistory();
+    const { fetchResult } = useContext(AuthContext);
+    const [loader, setLoader] = useState(false);
+    const [link, setLink] = useState('');
+    const [input, setInput] = useState('');
+    const [data, setData] = useState({});
+
+    const history = useHistory();
     const handleSubmit = e => {
         e.preventDefault();
-        const keyword = e.target.keyword.value;
-        var s =  `/${Item}/${Id}/${SubItem}/${SubId}/${keyword}`;
-        history.push(s);
-      };
+        const input = e.target.keyword.value;
+        var s = `http://127.0.0.1:8000/${Item}/${Id}/${SubItem}/${SubId}`;
+        var x = `/${Item}/${Id}/${SubItem}/${SubId}/${input}`;
+        history.push(x);
+        setLink(s);
+        setInput(input);
+    };
+   
+    const call = async () => {
+        const x = await fetchResult(link,input);
+        setData(x);
+        console.log(data);
+    }
+    useEffect(
+        () => {
+            setLoader(true);
+            call();
+            setLoader(false);
+        }, [])
     return (
         <>
             <div className='container-fluid' style={{ marginbottom: "-5%" }}>
@@ -40,7 +60,7 @@ export const Result = (props) => {
 
                                 </select>
                             </div> */}
-                            <br /> <br /> 
+                            <br /> <br />
                             <div className="form-group" >
                                 <label>Enter any Keyword of your choice :</label>
                                 <input type="text" required className="form-control" style={{ fontSize: "24px", border: "3px solid black" }} name="keyword" />
@@ -53,11 +73,11 @@ export const Result = (props) => {
                             </div>
 
                         </form>
-                        <img src={resultimg} className="rounded mx-auto d-block img-fluid mainimg" alt="Image" style={{ marginTop: "0%", marginBottom: "-5%", width:"30%" }} />
-                        
+                        <img src={resultimg} className="rounded mx-auto d-block img-fluid mainimg" alt="Image" style={{ marginTop: "0%", marginBottom: "-5%", width: "30%" }} />
+
                     </div>
                 </div>
-            </div><br /> <br /> 
+            </div><br /> <br />
         </>
     )
 }
