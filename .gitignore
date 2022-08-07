@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \.env
 backend\venv
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
@@ -23,3 +24,9 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+||||||| 5977c8ec
+=======
+backend/.gitignore
+backend/accounts/misc/Twitter/.env
+backend/accounts/misc/YouTube/.env
+>>>>>>> 12af49e44fb04b00a841d053a5077d7ae90208aa

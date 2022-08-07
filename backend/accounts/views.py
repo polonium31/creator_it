@@ -16,7 +16,7 @@ def get_results(request, Item, Id, SubItem, SubId):
     else:
         token = ""
     authenticated = requests.post("http://127.0.0.1:8000/auth/jwt/verify", json={"token": str(token)}).status_code
-    keyword = request.GET.get("keyword")
+    input = request.GET.get("input")
     url = request.GET.get("url")
     username = request.GET.get("username")
     hashtag = request.GET.get("hashtag")
@@ -25,33 +25,33 @@ def get_results(request, Item, Id, SubItem, SubId):
     # print(username)
     if authenticated == 200:
         if Item == "YouTube":
-            if url or keyword:
-                # print(keyword)
-                result = youtube(Id, SubItem, SubId, url, keyword)
+            if input:
+                # print(input)
+                result = youtube(Id, SubItem, SubId, input)
             else:
                 return JsonResponse(status = 400,data = {"Bad Request": "Check request parameters ..."})
-            # elif keyword:
-            #     result = youtube(Id, SubItem, SubId, keyword)
+            # elif input:
+            #     result = youtube(Id, SubItem, SubId, input)
             return JsonResponse({"youtube_result": result})
         elif Item == "Instagram":
-            if keyword:
-                result = instagram(Id, SubItem, SubId, keyword)
+            if input:
+                result = instagram(Id, SubItem, SubId, input)
             else:
                 result = instagram(Id, SubItem, SubId)
             return JsonResponse({"instagram_result": result})
         elif Item == "Twitter":
-            if username or keyword or hashtag or brand:
-                result = twitter(Id, SubItem, SubId, username, keyword, hashtag, brand)
+            if input:
+                result = twitter(Id, SubItem, SubId, input)
             else:
                 return JsonResponse(status = 400,data = {"Bad Request": "Check request parameters ..."})
-            # elif keyword:
-            #     result = twitter(Id, SubItem, SubId, keyword)
+            # elif input:
+            #     result = twitter(Id, SubItem, SubId, input)
             return JsonResponse({"twitter_result": result})
         elif Item == "ALLInOne":
-            result = allinone(Id, SubItem, SubId, keyword)
+            result = allinone(Id, SubItem, SubId, input)
             return JsonResponse({"allinone_result": result})
         elif Item == "LinkedIn":
-            result = linkedin(Id, SubItem, SubId, keyword)
+            result = linkedin(Id, SubItem, SubId, input)
             return JsonResponse({"linkedin_result": result})
         else:
             return JsonResponse(status = 404,data = {"URL Not Found !": "None"})
@@ -60,14 +60,14 @@ def get_results(request, Item, Id, SubItem, SubId):
     else:
         return JsonResponse(status = 404,data = {"Invalid credentials !": "Token not provided or Invalid"})
 
-def youtube(Id, SubItem, SubId, url, keyword):
+def youtube(Id, SubItem, SubId, input):
     # print(SubItem)
     if SubItem == "Trending Hashtags Prediction":
-        final_dict = get_hashtags(keyword)
+        final_dict = get_hashtags(input)
     elif  SubItem == "Trending Title Prediction":
-        final_dict = get_titles(keyword)
+        final_dict = get_titles(input)
     elif SubItem == "YouTube Stats":
-        final_dict = get_youtube_stats(url)
+        final_dict = get_youtube_stats(input)
     # print(final_dict)
     context = {
         "YouTube_Id": Id,
@@ -77,13 +77,13 @@ def youtube(Id, SubItem, SubId, url, keyword):
     }
     return ({"context": context})
 
-def instagram(Id, SubItem, SubId, keyword):
+def instagram(Id, SubItem, SubId, input):
     if SubItem == "Trending Hashtags Prediction":
-        final_dict = get_hashtags(keyword)
+        final_dict = get_hashtags(input)
     elif  SubItem == "Trending Title Prediction":
-        final_dict = get_titles(keyword)
+        final_dict = get_titles(input)
     # print(final_dict)
-    # final_dict = get_hashtags(keyword)
+    # final_dict = get_hashtags(input)
 
     context = {
         "Instagram_Id": Id,
@@ -93,15 +93,15 @@ def instagram(Id, SubItem, SubId, keyword):
     }
     return ({"context": context})
 
-def twitter(Id, SubItem, SubId, username, keyword, hashtag, brand):
+def twitter(Id, SubItem, SubId, input):
     if SubItem == "Trending Hashtags Prediction":
-        final_dict = get_hashtags(keyword)
+        final_dict = get_hashtags(input)
     elif SubItem == "Twitter Stats":
-        final_dict = get_twitter_stats(username)
+        final_dict = get_twitter_stats(input)
     elif SubItem == "Hashtag Sentiment Analysis":
-        final_dict = get_twitter_sentiment(hashtag)
+        final_dict = get_twitter_sentiment(input)
     elif SubItem == "Brand Image Analysis":
-        final_dict = get_twitter_brand_image(brand)
+        final_dict = get_twitter_brand_image(input)
 
     context = {
         "Twitter_Id": Id,
@@ -111,8 +111,8 @@ def twitter(Id, SubItem, SubId, username, keyword, hashtag, brand):
     }
     return ({"context": context})
 
-def linkedin(Id, SubItem, SubId, keyword):
-    final_dict = get_hashtags(keyword)
+def linkedin(Id, SubItem, SubId, input):
+    final_dict = get_hashtags(input)
 
     context = {
         "LinkedIn_Id": Id,
@@ -122,8 +122,8 @@ def linkedin(Id, SubItem, SubId, keyword):
     }
     return ({"context": context})
 
-def allinone(Id, SubItem, SubId, keyword):
-    final_dict = get_hashtags(keyword)
+def allinone(Id, SubItem, SubId, input):
+    final_dict = get_hashtags(input)
 
     context = {
         "AllInOne_Id": Id,

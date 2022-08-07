@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+# from distutils.command.config import config
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -179,7 +180,8 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
-
+DOMAIN = "creator.it.com"
+SITE_NAME = "Creator IT"
 # https://djoser.readthedocs.io/en/latest/settings.html
 DJOSER = {
     "LOGIN_FIELD": "email",
@@ -197,7 +199,10 @@ DJOSER = {
         "user_create": "accounts.serializers.UserCreateSerializer",
         "user": "accounts.serializers.UserCreateSerializer",
         "user_delete": "djoser.serializers.UserDeleteSerializer",
-    }
+    },
+    # "EMAIL": {
+    #     "activation": "core.email.ActivationEmail"
+    # }
 }
 
 # Default primary key field type
