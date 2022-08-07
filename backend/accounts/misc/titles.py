@@ -31,6 +31,6 @@ def get_titles(keyword = "Hello"):
             titles_1.append(key)
 
     final_json = dict()
-    for key, value in zip(range(len(titles_1)), titles_1):
+    for key, value in zip(range(20), titles_1):
         final_json[key] = value.strip()
     return final_json

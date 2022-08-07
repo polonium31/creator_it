@@ -32,13 +32,13 @@ def get_results(request, Item, Id, SubItem, SubId):
                 return JsonResponse(status = 400,data = {"Bad Request": "Check request parameters ..."})
             # elif input:
             #     result = youtube(Id, SubItem, SubId, input)
-            return JsonResponse({"youtube_result": result})
+            return JsonResponse(result)
         elif Item == "Instagram":
             if input:
                 result = instagram(Id, SubItem, SubId, input)
             else:
                 result = instagram(Id, SubItem, SubId)
-            return JsonResponse({"instagram_result": result})
+            return JsonResponse(result)
         elif Item == "Twitter":
             if input:
                 result = twitter(Id, SubItem, SubId, input)
@@ -46,13 +46,13 @@ def get_results(request, Item, Id, SubItem, SubId):
                 return JsonResponse(status = 400,data = {"Bad Request": "Check request parameters ..."})
             # elif input:
             #     result = twitter(Id, SubItem, SubId, input)
-            return JsonResponse({"twitter_result": result})
+            return JsonResponse(result)
         elif Item == "ALLInOne":
             result = allinone(Id, SubItem, SubId, input)
-            return JsonResponse({"allinone_result": result})
+            return JsonResponse(result)
         elif Item == "LinkedIn":
             result = linkedin(Id, SubItem, SubId, input)
-            return JsonResponse({"linkedin_result": result})
+            return JsonResponse(result)
         else:
             return JsonResponse(status = 404,data = {"URL Not Found !": "None"})
     elif not token:
@@ -75,7 +75,7 @@ def youtube(Id, SubItem, SubId, input):
         "YouTube_SubId": SubId,
         "Result": final_dict,
     }
-    return ({"context": context})
+    return (context.get("Result"))
 
 def instagram(Id, SubItem, SubId, input):
     if SubItem == "Trending Hashtags Prediction":
@@ -91,7 +91,7 @@ def instagram(Id, SubItem, SubId, input):
         "Instagram_SubId": SubId,
         "Result": final_dict,
     }
-    return ({"context": context})
+    return (context.get("Result"))
 
 def twitter(Id, SubItem, SubId, input):
     if SubItem == "Trending Hashtags Prediction":
@@ -107,9 +107,9 @@ def twitter(Id, SubItem, SubId, input):
         "Twitter_Id": Id,
         "Twitter_SubItem": SubItem,
         "Twitter_SubId": SubId,
-        SubItem: final_dict,
+        "Result": final_dict,
     }
-    return ({"context": context})
+    return (context.get("Result"))
 
 def linkedin(Id, SubItem, SubId, input):
     final_dict = get_hashtags(input)
@@ -118,9 +118,9 @@ def linkedin(Id, SubItem, SubId, input):
         "LinkedIn_Id": Id,
         "LinkedIn_SubItem": SubItem,
         "LinkedIn_SubId": SubId,
-        "HashTags": final_dict,
+        "Result": final_dict,
     }
-    return ({"context": context})
+    return (context.get("Result"))
 
 def allinone(Id, SubItem, SubId, input):
     final_dict = get_hashtags(input)
@@ -129,6 +129,6 @@ def allinone(Id, SubItem, SubId, input):
         "AllInOne_Id": Id,
         "AllInOne_SubItem": SubItem,
         "AllInOne_SubId": SubId,
-        "HashTags": final_dict,
+        "Result": final_dict,
     }
-    return ({"context": context})
+    return (context.get("Result"))
