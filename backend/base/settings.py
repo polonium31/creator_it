@@ -214,10 +214,21 @@ DJOSER = {
 AUTH_USER_MODEL = "accounts.UserAccount"
 
 # LOCAL DEVELOPMENT ONLY
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_CREDENTIALS = True
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_CREDENTIALS = True
+# CORS_ORIGIN_CREDENTIALS = True
 
 # FOR OPERATIONALIZED ENVIRONMENT
-# CORS_ORIGIN_WHITELIST = (
-#     'http://localhost:3000',
-# )
+CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000']
+# this is for corsheaders (pip)
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ALLOWED_ORIGINS = [
+# "https://127.0.0.1:3000"
+# "https://127.0.0.1:3000"
+# ]
+
+# from corsheaders.defaults import default_headers
+
+# CORS_ALLOW_HEADERS = default_headers + ('',)
+CORS_ALLOW_HEADERS = ('accept-encoding','content-type', 'accept', 'origin', 'authorization', 'Token')
