@@ -13,8 +13,7 @@ import { Home } from "./components/Home";
 import { Profile } from "./components/Profile";
 import { SubItem } from "./components/SubItem";
 import { Result } from "./components/Result";
-import { FinalOutputOne } from "./components/FinalOutputOne";
-import { FinalOutputTwo } from "./components/FinalOutputTwo";
+import { PrefinalResult } from "./components/PrefinalResult";
 import { VerifyUser } from "./components/VerifyUser";
 import { EmailVerify } from "./components/EmailVerify";
 import { VerifiedEmail }  from "./components/VerifiedEmail";
@@ -96,7 +95,7 @@ const App = (props) => {
             return (
               <>
                 <Header />
-                <FinalOutputTwo/>
+                <PrefinalResult/>
               </>
             )
           }} />

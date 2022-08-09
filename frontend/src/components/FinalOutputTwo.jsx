@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import resultimg from "../images/ContentCreator.png"
 import { useParams } from 'react-router-dom';
 import SubItemData from "./SubItemData"
 import './styles/finaloutputtwo.css'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { ToastContainer, toast,Flip } from 'react-toastify';
+import { ToastContainer, toast, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export const FinalOutputTwo = () => {
+export const FinalOutputTwo = ({data}) => {
     const { Item, Id, SubItem, SubId, Input } = useParams();
     const notify = () => {
         toast.info("Copied!!", {
             icon: "☑️"
-          });
+        });
     };
+
     return (
         <>
             <br />
@@ -29,17 +30,21 @@ export const FinalOutputTwo = () => {
                             </div>
                         </div>
                         <br />
+                        <ToastContainer position="bottom-right" autoClose={1000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover transition={Flip} bodyClassName="toastBody" progressClassName="toastProgress" />
                         <div className='text-center'>
-                            <CopyToClipboard text="jainish">
-                                <div>
-                                    <button type="button" onClick={notify} className="btn btn-outline-dark btn-lg hashtag" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy the Tag">Jainish</button>
-                                    <ToastContainer position="bottom-right" autoClose={1000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover transition={Flip} bodyClassName="toastBody" progressClassName="toastProgress"/>
-                                </div>
-                            </CopyToClipboard>
+                            {Object.keys(data).map(item => (
+                                        
+                                <CopyToClipboard text={data[item]}>
+                                        <button type="button" onClick={notify} className="btn btn-outline-dark btn-lg hashtag d-inline" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy the Tag">{data[item]}</button>
+                                </CopyToClipboard>
+                            
+                            ))}
+
                         </div>
                     </div>
                 </div>
             </div>
+            <br />
         </>
     )
 }

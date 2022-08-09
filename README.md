@@ -29,7 +29,11 @@ Creator It is a SEO optimisation and recommendation website for Youtubers, Insta
 ![alt text](images/10.PNG)
 ### 10. Verification complete Page
 ![alt text](images/11.PNG)
-
+### 10. Predition
+![alt text](images/12.PNG)
+![alt text](images/13.png)
+![alt text](images/14.png)
+![alt text](images/15.png)
 
 
 ## Software Development Life Cycle

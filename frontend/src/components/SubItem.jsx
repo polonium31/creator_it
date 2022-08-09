@@ -15,7 +15,7 @@ export const SubItem = () => {
     }
    
     function handleClick (c){
-        if(c==="Youtube")
+        if(c==="YouTube")
         {
             return 0;
         }

@@ -176,19 +176,17 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("authTokens");
     history.push("/");
   };
-  const fetchResult = async (link,input) => {
-    const response = await fetch('http://127.0.0.1:8000/YouTube/3/Trending%20Hashtags%20Prediction/0',{
+  const fetchResult = async (link) => {
+    console.log(link);
+    const response = await fetch(link,{
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Token": `Token ${authTokens.access}`
-      },
-      params: JSON.stringify({
-        input
-      })
+      }
     });
+    
     const resultData = await response.json()
-    localStorage.setItem("resultData",resultData);
     return resultData;
   };
   const contextData = {

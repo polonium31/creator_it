@@ -12,13 +12,13 @@ const SubItemData = [[
         putimg:false,
     },
     {
-        title: "Thumbnail Prediction",
+        title: "YouTube Stats",
         input: false,
         imgsrc: Youtube,
         putimg:true,
     },
     {
-        title: "Creator Statics on Youtube",
+        title: "Trending Hashtags Prediction",
         input: true,
         imgsrc: Youtube,
         putimg:false,
@@ -37,13 +37,13 @@ const SubItemData = [[
         putimg:false,
     },
     {
-        title: "Song for Reels Prediction",
+        title: "Creator Statics on Instagram",
         input: false,
         imgsrc: Instagram,
         putimg:true,
     },
     {
-        title: "Creator Statics on Instagram",
+        title: "Trending Hashtags Prediction",
         input: true,
         imgsrc: Instagram,
         putimg:false,
@@ -54,26 +54,29 @@ const SubItemData = [[
 ],
 [
     {
-        title: "Sentiment Prediction",
+        title: "Hashtag Sentiment Analysis",
         input: true,
         imgsrc: Twitter,
         putimg:false,
     },
     {
-        title: "Person or Organization Social Image Prediction",
+        title: "Brand Image Analysis",
         input: true,
         imgsrc: Twitter,
         putimg:false,
     },
     
     {
-        title: "User Statics on Twitter",  
+        title: "Trending Hashtags Prediction",  
         input: true,
-        imgsrc: Instagram,
+        imgsrc: Twitter,
         putimg:false,
     },
     {
-        title: "Comming Soon",
+        title: "Twitter Stats",
+        input: true,
+        imgsrc: Twitter,
+        putimg:false,
     },
 
 ],

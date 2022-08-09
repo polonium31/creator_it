@@ -7,7 +7,7 @@ import OtherPlatform from "../images/OtherPlatform.png";
 const ItemData = [
     {
       imgsrc: Youtube,
-      title: "Youtube",
+      title: "YouTube",
     },
     {
       imgsrc: Instagram,

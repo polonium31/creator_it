@@ -2,38 +2,44 @@ import React, { useContext, useState, useEffect } from 'react';
 import resultimg from "../images/ContentCreator.png"
 import SubItemData from "./SubItemData"
 import './styles/result.css'
-import { useHistory,useParams } from "react-router-dom";
+import { useHistory,useParams, useLocation } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 export const Result = (props) => {
     const { Item, Id, SubItem, SubId } = useParams();
     const { fetchResult } = useContext(AuthContext);
-    const [loader, setLoader] = useState(false);
-    const [link, setLink] = useState('');
-    const [input, setInput] = useState('');
     const [data, setData] = useState({});
+    const [keyword, setInput] = useState('');
+    const location = useLocation();
 
     const history = useHistory();
     const handleSubmit = e => {
         e.preventDefault();
-        const input = e.target.keyword.value;
-        var s = `http://127.0.0.1:8000/${Item}/${Id}/${SubItem}/${SubId}`;
-        var x = `/${Item}/${Id}/${SubItem}/${SubId}/${input}`;
-        history.push(x);
-        setLink(s);
-        setInput(input);
+        var finalinput;
+        let x = "https://www.youtube.com/c/";
+        if (Id==0 && SubId==1)
+        {
+            finalinput = x.concat(keyword);
+        }
+        else{
+            finalinput = keyword.replace(' ','');
+        }
+        // console.log(finalinput);
+        call(finalinput);
     };
    
-    const call = async () => {
-        const x = await fetchResult(link,input);
-        setData(x);
-        console.log(data);
+    const call = async (input) => {
+        var sub = window.location.href;
+        sub = sub.replace("localhost", "127.0.0.1");
+        sub = sub.replace(":3000", ":8000");
+        var s = `${sub}?input=${input}`;
+        var x = `/${Item}/${Id}/${SubItem}/${SubId}/${keyword}`;
+        const data = await fetchResult(s);
+        setData(data);
+        history.push({
+            pathname: x,
+            state: data
+        });
     }
-    useEffect(
-        () => {
-            setLoader(true);
-            call();
-            setLoader(false);
-        }, [])
     return (
         <>
             <div className='container-fluid' style={{ marginbottom: "-5%" }}>
@@ -63,7 +69,7 @@ export const Result = (props) => {
                             <br /> <br />
                             <div className="form-group" >
                                 <label>Enter any Keyword of your choice :</label>
-                                <input type="text" required className="form-control" style={{ fontSize: "24px", border: "3px solid black" }} name="keyword" />
+                                <input type="text" onChange={event => setInput(event.target.value)} required className="form-control" style={{ fontSize: "24px", border: "3px solid black" }} name="keyword" />
                             </div>
                             <br />
                             <div className="d-flex align-items-center justify-content-center">
