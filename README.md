@@ -5,6 +5,11 @@ Creator It is a SEO optimisation and recommendation website for Youtubers, Insta
 <!-- ![alt text]( ) -->
 <p align="center">
 <img src="images/logo.png" width="500"/>
+
+## Demo video
+https://user-images.githubusercontent.com/65034584/223026345-cb194c68-1686-452f-aeba-bc0d66dc1562.mp4
+
+
 </p>
 
 # Website Interface
@@ -29,7 +34,7 @@ Creator It is a SEO optimisation and recommendation website for Youtubers, Insta
 ![alt text](images/10.PNG)
 ### 10. Verification complete Page
 ![alt text](images/11.PNG)
-### 10. Predition
+### 10. Prediction
 ![alt text](images/12.PNG)
 ![alt text](images/13.png)
 ![alt text](images/14.png)
