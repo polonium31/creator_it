@@ -4,98 +4,91 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
-import { Login } from "./components/Login";
-import { SignUp } from "./components/SignUp";
-
-import { Header } from './components/Header';
-import { ContactForm } from './components/ContactForm';
-import { Home } from "./components/Home";
-import { Profile } from "./components/Profile";
-import { SubItem } from "./components/SubItem";
-import { Result } from "./components/Result";
-import { PrefinalResult } from "./components/PrefinalResult";
-import { VerifyUser } from "./components/VerifyUser";
-import { EmailVerify } from "./components/EmailVerify";
-import { VerifiedEmail }  from "./components/VerifiedEmail";
-import { ForgotPassword }  from "./components/ForgotPassword";
-import { ResetPassword } from "./components/ResetPassword";
-import { EditProfile } from "./components/EditProfile";
-import { Footer } from "./components/Footer";
+import { Login } from "./pages/Login";
+import { SignUp } from "./pages/SignUp";
+import Routes from './Routes';
 const App = (props) => {
 
   return (
     <>
 
       <AuthProvider>
-
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/email-verification" component={EmailVerify}/>
-          <Route exact path="/verification-compelete" component={VerifiedEmail}/>
-          <Route exact path="/forgot-password" component={ForgotPassword}/>
+          <Route exact path="/email-verification" component={Routes.EmailVerify}/>
+          <Route exact path="/verification-compelete" component={Routes.VerifiedEmail}/>
+          <Route exact path="/forgot-password" component={Routes.ForgotPassword}/>
          
           <PrivateRoute exact path="/" render={() => {
             return (
               <>
-                <Header />
-                <Home />
+                <Routes.Header />
+                <Routes.Home />
+                <Routes.Footer />
               </>
             )
           }} />
           <Route exact path="/profile" render={() => {
             return (
               <>
-                <Header />
-                <Profile />
+                <Routes.Header />
+                <Routes.Profile />
+                <Routes.Footer />
               </>
             )
           }} />
           <Route exact path="/reset-password" render={() => {
             return (
               <>
-                <Header />
-                <ResetPassword />
+                <Routes.Header />
+                <Routes.ResetPassword />
+                <Routes.Footer />
               </>
             )
           }} />
           <Route exact path="/edit-profile" render={() => {
             return (
               <>
-                <Header />
-                <EditProfile />
+                <Routes.Header />
+                <Routes.EditProfile />
+                <Routes.Footer />
               </>
             )
           }} />
           <Route exact path="/contact-form" render={() => {
             return (
               <>
-                <Header />
-                <ContactForm />
+                <Routes.Header />
+                <Routes.ContactForm />
+                <Routes.Footer />
               </>
             )
           }} />
           <Route exact path="/:Item" render={() => {
             return (
               <>
-                <Header />
-                <SubItem />
+                <Routes.Header />
+                <Routes.SubItem />
+                <Routes.Footer />
               </>
             )
           }} />
           <Route exact path="/:Item/:Id/:SubItem/:SubId" render={() => {
             return (
               <>
-                <Header />
-                <Result />
+                <Routes.Header />
+                <Routes.Result />
+                <Routes.Footer />
               </>
             )
           }} />
           <Route exact path="/:Item/:Id/:SubItem/:SubId/:Input" render={() => {
             return (
               <>
-                <Header />
-                <PrefinalResult/>
+                <Routes.Header />
+                <Routes.PrefinalResult/>
+                <Routes.Footer />
               </>
             )
           }} />
@@ -103,15 +96,17 @@ const App = (props) => {
           <Route exact path="/activate/:Uid/:Token" render={() => {
             return (
               <>
-                <Header />
-                <VerifyUser />
+                <Routes.Header />
+                <Routes.VerifyUser />
+                <Routes.Footer />
               </>
             )
           }} />
 
           <Redirect to="/" />
+          <Route  component={Routes.Error} />
         </Switch>
-        {/* <Footer /> */}
+        
       </AuthProvider>
     </>
   )

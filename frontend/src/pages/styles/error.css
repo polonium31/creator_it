@@ -1,0 +1,18 @@
+.error-div{
+  background-image: url("../../images//errorbackground.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+#error-image{
+    width: 30%;
+    height: 25%; 
+    margin-top: 3%;
+}
+#error{
+    width: 50%;
+    height: 50%;
+    padding-top: 5%;
+
+}

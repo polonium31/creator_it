@@ -1,0 +1,35 @@
+.final-div {
+    background: linear-gradient(98deg, rgba(139,108,227,1) 8%, rgba(238,238,238,1) 55%);
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 50px;
+    background: rgb(177, 154, 240);
+}
+
+.hashtag
+{
+    font-weight: 700;
+    margin: 1% 1% 1% 1%;
+    font-size: x-large;
+}
+.hashtag:hover{
+    background-color: rgb(218, 206, 251);
+    color: black;
+    
+}
+.hashtag:focus {
+    box-shadow: none;
+  }
+.toastBody {
+color: black;
+font-weight: 600;
+font-size: large;
+}
+.toastProgress {
+    background:#7344f5 !important;
+    height: 8px !important;
+    
+  }
+  .Toastify__toast {
+    border-radius: 10px !important;
+    }
